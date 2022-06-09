@@ -81,6 +81,7 @@ int main() {
 	insereLista(7, 1);
 	insereLista(30, 2);
 	insereLista(23, 3);
+	insereLista(30, 4);
 	imprimeLista();
 	
 	recuperaLista(4);
