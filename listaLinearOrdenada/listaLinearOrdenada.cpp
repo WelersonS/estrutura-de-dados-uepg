@@ -147,10 +147,8 @@ int main() {
 	removeValor(45);
 	
 	//testa remover valor: valor existente
-	removeValor(30);
+	removeValor(70);
 	imprime();
 	insereLista(87);
-	imprime();
-	
-	
+	imprime();	
 }
