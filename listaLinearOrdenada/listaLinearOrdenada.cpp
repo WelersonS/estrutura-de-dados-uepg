@@ -22,6 +22,7 @@ void insereLista(int valor) {
 	
 	lista[i] = valor;
 	tamanho++;
+	cout << "Elemento inserido" << endl;
 }
 
 //imprime o valor inserido em uma determinada posição. O programa deve verificar se a posição é válida
@@ -40,8 +41,6 @@ void recuperaLista(int posicao) {
 }
 
 //remove um valor específico da lista mantendo-a ordenada
-//*fazer busca
-//quando encontrar um valor maior ao que esta sendo buscado, já deve parar a execução
 void removeValor(int valor) {
 	if(tamanho == 0) {
 		cout << "Lista vazia" << endl;
@@ -55,14 +54,18 @@ void removeValor(int valor) {
 	
 	for(int i = 0; i < tamanho; i++) {
 		if(valor == lista[i]) {
-			lista[i] = lista[i+1];
+			tamanho--;
+			while(i < tamanho) {
+				lista[i] = lista[i+1];
+				i++;
+			}
+			cout << "Elemento removido da lista" << endl;
+			return;
 		} else if(lista[i] > valor) {
 			cout << "O valor nao existe na lista" << endl;
 			return;
 		}
 	}
-	
-	cout << "Elemento removido da lista" << endl;
 }
 
 //informa em que posição da lista está determinado valor
@@ -79,10 +82,9 @@ void buscaLista(int valor) {
 		} else if(lista[i] > valor || i == tamanho-1) {
 				cout << "O valor nao existe na lista" << endl;
 				return;
-			}
 		}
-	}	
-}
+	}
+}	
 
 //imprime o conteúdo da lista. Se a lista estiver vazia, imprima a mensagem “Lista vazia”
 void imprime() {
@@ -97,13 +99,58 @@ void imprime() {
 }
 
 int main() {
-	insereLista(15);
-	insereLista(10);
-	insereLista(3);
-	insereLista(10);
-	
+	//testa impressão lista vazia
 	imprime();
 	
-	buscaLista(15);
-	recuperaLista(3);
+	//testa recuperar lista: lista vazia
+	recuperaLista(0);
+	
+	//testa remover valor: lista vazia
+	removeValor(15);
+	
+	//testa buscar lista: lista vazia
+	buscaLista(25);
+	
+	//testa inserção
+	insereLista(10);
+	insereLista(20);
+	insereLista(30);
+	insereLista(60);
+	insereLista(50);
+	insereLista(40);
+	insereLista(70);
+	
+	//testa inserção na lista cheia
+	insereLista(80);
+	
+	//testa impressão com lista cheia
+	imprime();
+	
+	//testa recuperar lista: posicao inválida
+	recuperaLista(7);
+	
+	//testa recuperar lista: posicao válida
+	//deverá imprimir valor = 40
+	recuperaLista(0);
+	
+	//deverá imprimir valor = 70
+	recuperaLista(6);
+	
+	//testa busca lista: valor não existente
+	buscaLista(85);
+	
+	//testa busca lista: valor existente
+	//deverá retornar posição 3
+	buscaLista(40);
+	
+	//testa remover valor: valor não existente
+	removeValor(45);
+	
+	//testa remover valor: valor existente
+	removeValor(30);
+	imprime();
+	insereLista(87);
+	imprime();
+	
+	
 }
