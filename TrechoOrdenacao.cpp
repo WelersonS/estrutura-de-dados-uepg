@@ -17,19 +17,22 @@ void gera() {
 }
 
 void bubbleSort() {
-	int pass = 1;
+	int pass = 1, aux;
 	bool sorted = 0;
 	
-	while(!sorted || pass < TAM) {
+	while(!sorted && pass < TAM) {
 		sorted = 1;
 		
-		for(int i = 0; i < TAM; i++) {
+		for(int i = 0; i < TAM-pass-1; i++) {
 			if(vetor[i] > vetor[i+1]) {
+				aux = vetor[i];
 				vetor[i] = vetor[i+1];
-				vetor[i+1] = vetor[i];
+				vetor[i+1] = aux;
 				sorted = 0;
-			}
-		}
+			}			
+			
+		}	
+		pass++;
 	}
 }
 
@@ -39,6 +42,10 @@ int main() {
     clock_t tempo2;
     // Marca o tempo de execução do algoritmo bubbleSort()
     gera();
+    
+    for (int i=0; i<TAM; i++)
+        cout<< vetor[i] << " ";
+        
     tempo1 = clock();
 	bubbleSort();
 	
