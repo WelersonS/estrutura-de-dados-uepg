@@ -23,7 +23,7 @@ void bubbleSort() {
 	while(!sorted && pass < TAM) {
 		sorted = 1;
 		
-		for(int i = 0; i < TAM-pass-1; i++) {
+		for(int i = 0; i < TAM-pass; i++) {
 			if(vetor[i] > vetor[i+1]) {
 				aux = vetor[i];
 				vetor[i] = vetor[i+1];
@@ -48,6 +48,8 @@ int main() {
         
     tempo1 = clock();
 	bubbleSort();
+	
+	cout << "" << endl;
 	
     tempo2 = clock() - tempo1;
     cout << "Tempo: " << (float) tempo2/CLOCKS_PER_SEC << " s" << endl;
