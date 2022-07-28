@@ -7,7 +7,10 @@ struct no {
 	struct no *prox;
 };
 
-struct no *topo = NULL;
+// *topo é o nome do ponteiro
+//struct no indica que o ponteiro *topo, apontará para endereço que contém valores do tipo de struct no
+//semelhante a uma tipagem do ponteiro
+struct no *topo = NULL; 
 
 void push(int valor) {
 	struct no *novo;
@@ -20,6 +23,26 @@ void push(int valor) {
 	topo = novo;
 	
 	cout << "Elemento inserido" << endl;
+}
+
+void pop() {
+	
+	struct no *apaga;
+	
+	if(topo == NULL) {
+		cout << "Pilha vazia" << endl;
+		return;
+	}
+	
+	//utilizar momory trash para jogar o valor a ser removido para lixeira
+	apaga = topo;
+	
+	topo = topo -> prox;
+	
+	//deleta o valor que apaga aponta
+	delete(apaga);
+	
+	cout << "Elemento removido" << endl;
 }
 
 void imprime() {
@@ -41,5 +64,8 @@ int main() {
 	push(10);
 	push(20);
 	push(30);
+	imprime();
+	
+	pop();
 	imprime();
 }
